@@ -13,7 +13,9 @@ import { faL } from "@fortawesome/free-solid-svg-icons";
 import ModalWrapper from './ModalWrapper';
 import Button from '@mui/material/Button';
 import ResumeBuilder from './ResumeBuilder';
-
+import SmartPhone from "../../images/dashboard/mobilebanners/smartphone.png"
+import appStoreIcon from "../../images/dashboard/mobilebanners/appstoreicon.png";
+import playStore from "../../images/dashboard/mobilebanners/playstore.png";
 
 const ApplicantDashboard = () => {
   const [token, setToken] = useState('');
@@ -345,7 +347,7 @@ const ApplicantDashboard = () => {
                     </div>
                   </div>
                 </div>
-                {userData && userData.localResume == true && (
+          {  /*    {userData && userData.localResume == true && (
                 <div className="col-12 col-xxl-9 col-xl-12 col-lg-12 col-md-12 col-sm-12 display-flex resumebox">
                   <div className="card" >
                     <div className="resumecard" style={{ cursor: "pointer" }}>
@@ -384,7 +386,123 @@ const ApplicantDashboard = () => {
                     </div>
                   </div>
                 </div>
-                )}
+                )} */}
+
+                {/*mobile banner*/}
+                {/* <div
+  className="col-12 col-xxl-9 col-xl-12 col-lg-12 col-md-12 col-sm-12 display-flex certificatebox"
+  style={{
+    background: 'linear-gradient(90deg, #FF8C00 0%, #FFA500 100%)',
+    padding: '0px 16px',
+    borderRadius: '12px',
+    color: '#fff',
+    fontFamily: 'Plus Jakarta Sans',
+    fontWeight: '500',
+    margin: '18px auto',
+    overflow: 'hidden',
+  }}
+>
+  <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
+    <img
+    src={SmartPhone}
+      alt="App Preview"
+      style={{
+        width: '231px',
+        height: '254px',
+        marginRight: '20px',
+        marginBottom: '0px',
+      }}
+    />
+    <div style={{ flex: '1 1 0' }}>
+      <p style={{ margin: 0, fontSize: '16px',  color: '#fff' }}>
+        Why open laptop when jobs can be right in your pocket.
+      </p>
+      <p style={{ margin: '5px 0', fontWeight: '700',  color: '#fff' }}>
+        Download the app now!
+      </p>
+      <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginTop: '10px' }}>
+        <a href="https://apps.apple.com" target="_blank" rel="noreferrer">
+          <img
+            src={appStoreIcon}
+            alt="Download on the App Store"
+            style={{ height: '38px' }}
+          />
+        </a>
+        <a href="https://play.google.com" target="_blank" rel="noreferrer">
+          <img
+            src={playStore}
+            alt="Get it on Google Play"
+            style={{ height: '38px' }}
+          />
+        </a>
+      </div>
+    </div>
+  </div>
+</div> */}
+
+
+
+<div className="col-12 col-xxl-9 col-xl-12 col-lg-12 col-md-12 col-sm-12 mt-3 mb-3 ml-2 certificatebox">
+  <div
+      className="d-flex flex-wrap flex-md-nowrap align-items-center h-100 "
+      style={{
+      background: 'linear-gradient(90deg, #FF8C00 0%, #FFA500 100%)',
+      fontFamily: 'Plus Jakarta Sans',
+      fontWeight: '500',
+      borderRadius: '12px',
+      color: '#fff',
+      overflow: 'visible',
+    }}
+  >
+          {/* App Image - using marginTop to float up */}
+
+       <div className="mb-0 pb-0 ml-8 " style={{ marginTop: '-25px', marginRight: '20px', flexShrink: 0 }}>
+        <img
+          src={SmartPhone}
+          alt="App Preview"
+          style={{
+            width: '231px',
+            height: '254px',
+            objectFit: 'contain',
+            marginBottom: '0px',
+            marginTop:"-40px",
+            marginLeft: '60px',
+          }}
+        />
+      </div>
+    {/* <div
+      className="d-flex flex-wrap flex-md-nowrap align-items-center h-100"
+      style={{ width: '100%' }}
+    > */}
+   
+
+      {/* Text + Store Links */}
+      <div className="m-8 " style={{ flex: 1, minWidth: '250px' }}>
+        <p style={{ margin: 0, fontSize: '16px', color: '#fff' }}>
+          Why open laptop when jobs can be right in your pocket.
+        </p>
+        <p style={{ margin: '5px 0', fontWeight: '700', color: '#fff' }}>
+          Download the app now!
+        </p>
+        <div  style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginTop: '10px' }}>
+          <a href="https://apps.apple.com" target="_blank" rel="noreferrer">
+            <img src={appStoreIcon} alt="App Store" style={{ height: '36px', width: '121px', }} />
+          </a>
+          <a href="https://play.google.com" target="_blank" rel="noreferrer">
+            <img src={playStore} alt="Google Play" style={{ height: '36px', width:'121px' }} />
+          </a>
+        </div>
+      {/* </div> */}
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
               {/* New one*/}
               {!showIcon && (
         <div className="col-12 col-xxl-9 col-xl-12 col-lg-12 col-md-12 col-sm-12 display-flex certificatebox">

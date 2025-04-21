@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import ModalWrapper from './ModalWrapper'; 
 import ResumeBuilder from './ResumeBuilder'; 
+import appleStore from '../../images/dashboard/mobilebanners/applestore.png'
+import playStore from '../../images/dashboard/mobilebanners/playStoreicon.png'
 
 const Modal = ({ onClose }) => {
   const [userData, setUserData] = useState(null);
@@ -82,33 +84,121 @@ const Modal = ({ onClose }) => {
       <h3 style={{ fontSize: '20px', textAlign: 'center', marginBottom: '35px' }}>Job Applied Successfully</h3>
       {userData &&
         (userData.localResume ? (
-          <div className="enhance-section">
-            <p className="enhanced-paragraph" style={{ fontSize: '17px', marginBottom: '10px', fontWeight: '600' }}>Build your resume</p>
-            <div className="horizontal-align">
-              <p style={{ fontSize: '12px', lineHeight: '1.5', fontWeight: '400' }}>Build a professional resume to stand out of the crowd</p>
-              <div className="responsive-margin">
-                <button
-                  className="Create-Resume"
-                  style={{
-                    fontSize: '11px',
-                    height: '30px',
-                    width: '120px',
-                    fontFamily: 'Plus Jakarta Sans',
-                    fontWeight: '100',
-                  }}
-                  onClick={openModal}
-                >
-                  Create Resume
-                </button>
+//           <div className="enhance-section ">
+//             <p className="enhanced-paragraph" style={{ fontSize: '12px', marginBottom: '10px', fontWeight: '600' }}>Why open laptop when jobs can be right in your pocket.
+//             </p>
+//             <div className="horizontal-align display-flex align-items-right justify-content-right" >
+//               <p style={{ fontSize: '12px', lineHeight: '1.5', fontWeight: '400', color: "#FF8C00" }}>Download the app now!</p>
+//               <div className="responsive-margin" >
+//                 {/* <button
+//                   className="Create-Resume"
+//                   style={{
+//                     fontSize: '11px',
+//                     height: '30px',
+//                     width: '120px',
+//                     fontFamily: 'Plus Jakarta Sans',
+//                     fontWeight: '100',
+//                   }}
+//                   onClick={openModal}
+//                 >
+//                 </button> */}
+//                 {/* <div className='display-flex align-items-center justify-content-center gap-2'>
+//                   <div className='display-grid'>
+//                   <img
+//   src={appleStore}
+//   alt="Download on the App Store"
+//   className='ml-2'
+//   style={{ height: "30px", width: "30px", objectFit: "contain" }}
+// />
+// <p>Apple store</p>
+//                   </div>
 
-                {isModalOpen && (
-                  <ModalWrapper isOpen={isModalOpen} onClose={closeModal} title="Build Your Resume">
-                    <ResumeBuilder />
-                  </ModalWrapper>
-                )}
-              </div>
-            </div>
-          </div>
+//                   <div className='display-grid'>
+
+
+// <img
+//   src={playStore}
+//   alt="Download on the App Store"
+//   className='ml-2'
+
+//   style={{ height: "30px", width: "30px", objectFit: "contain" }}/>
+// <p>Play store</p>
+// </div>
+
+             
+//                 </div> */}
+             
+
+//              <div className="d-flex gap-3 justify-content-center align-items-center mt-2">
+//   <div className="d-flex flex-column align-items-center">
+//     <img
+//       src={appleStore}
+//       alt="Download on the App Store"
+//       style={{ height: "30px", width: "30px", objectFit: "contain" }}
+//     />
+//     <p style={{ fontSize: '10px', marginTop: '4px' }}>Apple Store</p>
+//   </div>
+
+//   <div className="d-flex flex-column align-items-center">
+//     <img
+//       src={playStore}
+//       alt="Download on the Play Store"
+//       style={{ height: "30px", width: "30px", objectFit: "contain" }}
+//     />
+//     <p style={{ fontSize: '10px', marginTop: '4px' }}>Play Store</p>
+//   </div>
+// </div>
+
+             
+//                             {/* {isModalOpen && (
+//                   <ModalWrapper isOpen={isModalOpen} onClose={closeModal} title="Build Your Resume">
+//                     <ResumeBuilder />
+//                   </ModalWrapper>
+//                 )} */}
+//               </div>
+//             </div>
+//           </div>
+
+
+<div
+  style={{
+    backgroundColor: '#F9F9F9',
+    borderRadius: '10px',
+    padding: '15px',
+    textAlign: 'center',
+    fontFamily: 'Plus Jakarta Sans',
+    display: 'flex',
+  }}
+>
+  <p style={{ fontSize: '13px', fontWeight: '600', marginBottom: '8px' }}>
+    Why open laptop when jobs can be right in your pocket.
+    <span style={{ fontSize: '12px', color: '#FF8C00', fontWeight: '500', marginBottom: '15px' }}>
+    Download the app now!
+  </span>
+  </p>
+  
+
+  <div className="d-flex justify-content-center gap-4">
+    <div className="d-flex flex-column align-items-center">
+      <img
+        src={appleStore}
+        alt="App Store"
+        style={{ height: '30px', width: '30px', objectFit: 'contain' }}
+      />
+      <p style={{ fontSize: '11px', marginTop: '6px', color: '#000' }}>Apple Store</p>
+    </div>
+
+    <div className="d-flex flex-column align-items-center">
+      <img
+        src={playStore}
+        alt="Play Store"
+        style={{ height: '30px', width: '30px', objectFit: 'contain' }}
+      />
+      <p style={{ fontSize: '11px', marginTop: '6px', color: '#000' }}>Play Store</p>
+    </div>
+  </div>
+</div>
+
         ) : (
           <div className="enhance-section">
             <p className="enhanced-paragraph" style={{ fontSize: '17px', marginBottom: '10px', fontWeight: '600' }}>Enhance your skills</p>
