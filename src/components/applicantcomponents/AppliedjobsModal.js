@@ -24,6 +24,18 @@ const Modal = ({ onClose }) => {
     }
   }, []);
 
+
+  const [isMobileView, setIsMobileView] = useState(window.innerWidth < 755);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobileView(window.innerWidth < 755);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
 <div className="modal-overlay">
   <div className="modal-text">
@@ -37,7 +49,7 @@ const Modal = ({ onClose }) => {
           top: '-1px',
           right: '0px',
           background: 'transparent',
-          padding:'1px'
+          padding:'10px'
         }}
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
@@ -161,31 +173,38 @@ const Modal = ({ onClose }) => {
 
 
 <div
-  style={{
-    backgroundColor: '#F9F9F9',
-    borderRadius: '10px',
-    padding: '15px',
-    textAlign: 'center',
-    fontFamily: 'Plus Jakarta Sans',
-    display: 'flex',
-  }}
+className={isMobileView ? 'bg-light p-3 rounded w-100' : ''}
+style={
+  isMobileView
+    ? {}
+    : {
+        backgroundColor: '#F9F9F9',
+        borderRadius: '10px',
+        padding: '10px',
+        textAlign: 'left',
+        fontFamily: 'Plus Jakarta Sans',
+        display: 'flex',
+        width: 'auto',
+      }
+}
 >
-  <p style={{ fontSize: '13px', fontWeight: '600', marginBottom: '8px' }}>
+  <p style={{ fontSize: '15px', fontWeight: '600', marginBottom: '8px', color: '#000' }}>
     Why open laptop when jobs can be right in your pocket.
-    <span style={{ fontSize: '12px', color: '#FF8C00', fontWeight: '500', marginBottom: '15px' }}>
+    <br />
+    <span style={{ fontSize: '15px', color: '#FF8C00', fontWeight: '500', marginBottom: '15px' }}>
     Download the app now!
   </span>
   </p>
   
 
-  <div className="d-flex justify-content-center gap-4">
+  <div className="d-flex justify-content-center gap-2">
     <div className="d-flex flex-column align-items-center">
       <img
         src={appleStore}
         alt="App Store"
         style={{ height: '30px', width: '30px', objectFit: 'contain' }}
       />
-      <p style={{ fontSize: '11px', marginTop: '6px', color: '#000' }}>Apple Store</p>
+      <p style={{ fontSize: '11px', marginTop: '6px', color: '#000', width:"62px" }}>Apple Store</p>
     </div>
 
     <div className="d-flex flex-column align-items-center">
@@ -194,7 +213,7 @@ const Modal = ({ onClose }) => {
         alt="Play Store"
         style={{ height: '30px', width: '30px', objectFit: 'contain' }}
       />
-      <p style={{ fontSize: '11px', marginTop: '6px', color: '#000' }}>Play Store</p>
+      <p style={{ fontSize: '11px', marginTop: '6px', color: '#000', width:"55px" }}>Play Store</p>
     </div>
   </div>
 </div>

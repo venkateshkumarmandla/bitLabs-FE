@@ -19,7 +19,7 @@
     position: relative;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     text-align: center;
-    width: clamp(340px,60vw,550px);
+    width: clamp(340px,60vw,620px);
   }
   
   .close-button1 {

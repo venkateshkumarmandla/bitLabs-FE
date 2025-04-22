@@ -442,7 +442,7 @@ const ApplicantDashboard = () => {
 
 
 
-<div className="col-12 col-xxl-9 col-xl-12 col-lg-12 col-md-12 col-sm-12 mt-3 mb-3 ml-2 certificatebox">
+<div className="col-12 col-xxl-9 col-xl-12 col-lg-12 col-md-12 col-sm-12 mt-3 mb-3 ml-2 certificatebox responsive-margin">
   <div
       className="d-flex flex-wrap flex-md-nowrap align-items-center h-100 "
       style={{
@@ -452,11 +452,12 @@ const ApplicantDashboard = () => {
       borderRadius: '12px',
       color: '#fff',
       overflow: 'visible',
+      margin:"5px"
     }}
   >
           {/* App Image - using marginTop to float up */}
 
-       <div className="mb-0 pb-0 ml-8 " style={{ marginTop: '-25px', marginRight: '20px', flexShrink: 0 }}>
+       <div className="mb-0 pb-0 ml-8 " style={{ marginTop: '-25px', marginRight: '20px', flexShrink: 0,  }}>
         <img
           src={SmartPhone}
           alt="App Preview"
@@ -477,7 +478,7 @@ const ApplicantDashboard = () => {
    
 
       {/* Text + Store Links */}
-      <div className="m-8 " style={{ flex: 1, minWidth: '250px' }}>
+      <div className="m-8 " style={{ flex: 1, minWidth: '250px', margin:"10px" }}>
         <p style={{ margin: 0, fontSize: '16px', color: '#fff' }}>
           Why open laptop when jobs can be right in your pocket.
         </p>
