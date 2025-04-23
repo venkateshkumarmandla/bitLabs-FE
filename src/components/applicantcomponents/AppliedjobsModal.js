@@ -15,6 +15,7 @@ const Modal = ({ onClose }) => {
   const closeModal = () => {
     setIsModalOpen(false);
   };
+  const [isMobileView, setIsMobileView] = useState(window.innerWidth < 755);
 
   useEffect(() => {
     // Retrieve user data from local storage
@@ -22,12 +23,6 @@ const Modal = ({ onClose }) => {
     if (storedUserData) {
       setUserData(JSON.parse(storedUserData));
     }
-  }, []);
-
-
-  const [isMobileView, setIsMobileView] = useState(window.innerWidth < 755);
-
-  useEffect(() => {
     const handleResize = () => {
       setIsMobileView(window.innerWidth < 755);
     };
@@ -35,6 +30,9 @@ const Modal = ({ onClose }) => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+
+
 
   return (
 <div className="modal-overlay">

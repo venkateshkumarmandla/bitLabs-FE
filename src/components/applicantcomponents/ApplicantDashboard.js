@@ -232,6 +232,37 @@ const ApplicantDashboard = () => {
   };
   // const [showIcon, setShowIcon] = useState(false); // Set to true or false to show/hide the SVG
 
+
+  const [smartphoneImage, setSmartphoneImage] = useState(null);
+
+  useEffect(() => {
+    const fetchImages = async () => {
+      try {
+        const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ5YXN3YW50aHNhZ2FyMDMwN0BnbWFpbC5jb20iLCJleHAiOjE3NDU0NDAxMjcsImlhdCI6MTc0NTQwNDEyN30.VQ80pYqUVxNj2wFL88ktsFqNwK41yvfGMOyc5nJb8UY';
+
+        const response = await axios.get('http://192.168.1.61:8080/file/allFiles', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+        });
+
+        const images = response.data;
+
+        const smartImage = images.find((img) =>
+          img.toLowerCase().includes('smartphone')
+        );
+
+        setSmartphoneImage(smartImage);
+        console.log('Smartphone Image:', smartImage); 
+        console.log("Images:", smartphoneImage); // Log all images to see their names
+      } catch (error) {
+        console.error('Error fetching images:', error);
+      }
+    };
+
+    fetchImages();
+  }, []);
   return (
     <div>
       {loading ? null : (
@@ -240,6 +271,68 @@ const ApplicantDashboard = () => {
             <div className="col-lg-12 col-md-12">
               <div className="page-title-dashboard">
                 <div className="title-dashboard">
+                {/* <div
+  className="d-block d-sm-none text-white text-center p-3 overflow-hidden"
+  style={{
+    background: 'linear-gradient(90deg, #F97316 0%, #FBBC5F 100%)',
+    whiteSpace: 'nowrap',
+    position: 'relative',
+    height: '50px',
+    width: '100%',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      display: 'inline-block',
+      position: 'absolute',
+      whiteSpace: 'nowrap',
+      left: '-100%',
+      animation: 'scrollRight 10s linear infinite',
+    }}
+  >
+    You are only seeing 50% of the job posts. Download our mobile app to access all the job posts!
+  </div>
+  <style>{`
+    @keyframes scrollRight {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+  `}</style>
+</div> */}
+
+<div
+  className="d-block d-sm-none text-white text-center p-3 overflow-hidden"
+  style={{
+    background: 'linear-gradient(90deg, #F97316 0%, #FBBC5F 100%)',
+    whiteSpace: 'nowrap',
+    position: 'relative',
+    height: '50px',
+    width: '100%',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      display: 'inline-block',
+      position: 'absolute',
+      whiteSpace: 'nowrap',
+      left: '100%',
+      animation: 'scrollLeft 10s linear infinite',
+    }}
+  >
+    You are only seeing 50% of the job posts. Download our mobile app to access all the job posts!
+  </div>
+  <style>{`
+    @keyframes scrollLeft {
+      0% { left: 100%; }
+      100% { left: -100%; }
+    }
+  `}</style>
+</div>
+
+
+
                   
                 <div className="userName-title">
       Hi {userData && userData.firstName !== null && userData.firstName !== "" ? userData.firstName : ''}
@@ -458,7 +551,7 @@ const ApplicantDashboard = () => {
           {/* App Image - using marginTop to float up */}
 
        <div className="mb-0 pb-0 ml-8 " style={{ marginTop: '-25px', marginRight: '20px', flexShrink: 0,  }}>
-        <img
+        {/* <img
           src={SmartPhone}
           alt="App Preview"
           style={{
@@ -469,7 +562,23 @@ const ApplicantDashboard = () => {
             marginTop:"-40px",
             marginLeft: '60px',
           }}
+        /> */}
+
+
+{smartphoneImage && (
+        <img
+          src={smartphoneImage}
+          alt="App Preview"
+          style={{
+            width: '231px',
+            height: '254px',
+            objectFit: 'contain',
+            marginBottom: '0px',
+            marginTop: '-40px',
+            marginLeft: '60px',
+          }}
         />
+      )}
       </div>
     {/* <div
       className="d-flex flex-wrap flex-md-nowrap align-items-center h-100"
