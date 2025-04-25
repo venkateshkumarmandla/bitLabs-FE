@@ -21,6 +21,7 @@ import CookiePolicy from './components/common/CookiePolicy';
 import TermsOfServices from './components/common/TermsOfServices';
 import ApplicantBasicDetails from './components/applicantcomponents/ApplicantBasicDetails';
 import JobWidget from './components/jobWidget';
+import Exampage from './pages/examprotrocing/Exampage';
 
 
 
@@ -73,6 +74,7 @@ function App() {
   <Route path="/widget" element={<JobWidget />} />
               {isLoggedIn ? (
                 <>
+                <Route path="/examprotrocing" element={<Exampage />} />
                 <Route path="/applicanthome" element={<ApplicantHomePage />} />
                 <Route path="/applicant-update-profile" element={<ApplicantHomePage />} />
                 <Route path="/applicant-view-profile" element={<ApplicantHomePage />} />
