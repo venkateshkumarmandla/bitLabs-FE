@@ -238,9 +238,10 @@ const ApplicantDashboard = () => {
   useEffect(() => {
     const fetchImages = async () => {
       try {
-        const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ5YXN3YW50aHNhZ2FyMDMwN0BnbWFpbC5jb20iLCJleHAiOjE3NDU0NDAxMjcsImlhdCI6MTc0NTQwNDEyN30.VQ80pYqUVxNj2wFL88ktsFqNwK41yvfGMOyc5nJb8UY';
+        const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ5YXN3YW50aHNhZ2FyMDMwN0BnbWFpbC5jb20iLCJleHAiOjE3NDU1Mjc5MzUsImlhdCI6MTc0NTQ5MTkzNX0.blOw9YrkFc_DtjuXhDsPpiby32YD_KP5PTvTTRekJsg'
 
-        const response = await axios.get('http://192.168.1.61:8080/file/allFiles', {
+
+        const response = await axios.get('http://192.168.1.40:8080/file/allFiles', {
           headers: {
             Authorization: `Bearer ${token}`,
             'Content-Type': 'application/json',
@@ -551,7 +552,7 @@ const ApplicantDashboard = () => {
           {/* App Image - using marginTop to float up */}
 
        <div className="mb-0 pb-0 ml-8 " style={{ marginTop: '-25px', marginRight: '20px', flexShrink: 0,  }}>
-        {/* <img
+      <img
           src={SmartPhone}
           alt="App Preview"
           style={{
@@ -562,9 +563,9 @@ const ApplicantDashboard = () => {
             marginTop:"-40px",
             marginLeft: '60px',
           }}
-        /> */}
+        /> 
 
-
+ {/*
 {smartphoneImage && (
         <img
           src={smartphoneImage}
@@ -578,7 +579,7 @@ const ApplicantDashboard = () => {
             marginLeft: '60px',
           }}
         />
-      )}
+      )}*/}
       </div>
     {/* <div
       className="d-flex flex-wrap flex-md-nowrap align-items-center h-100"
