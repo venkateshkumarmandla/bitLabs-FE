@@ -127,6 +127,7 @@ const SkillBadgeCard = ({ skillName, status, badgeIcon, retakeTest, testFailedAt
   }, [status]);
 
   const handleTakeTest = (testName) => {
+    localStorage.setItem('testName', testName); // Store the test name in local storage
 
     navigate('/applicant-take-test', { state: { testName } });
   };
