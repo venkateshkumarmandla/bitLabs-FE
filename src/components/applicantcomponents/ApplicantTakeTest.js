@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import * as faceapi from 'face-api.js';
 import { useNavigate, useLocation,Link } from 'react-router-dom';
 import aptitudeQuestions from './questions/aptitude_questions.json';
 import technicalQuestions from './questions/technical_questions.json';
@@ -36,6 +37,7 @@ import AngularTest from './questions/Angular.json';
 import ManualTestingTest from './questions/ManualTesting.json';
 import VueTest from './questions/Vue.json';
 import axios from 'axios';
+import Exampage from '../../pages/examprotrocing/Exampage';
 
 const shuffleArray = (array) => {
   return array.sort(() => Math.random() - 0.5);
@@ -614,8 +616,347 @@ const ApplicantTakeTest = () => {
     }
   };
 
+
+
+//   const videoRef = useRef(null);
+//   const [warningCount, setWarningCount] = useState(0);
+//   const [storedDescriptor, setStoredDescriptor] = useState(null); // base64 match
+//   const [isLoading, setIsLoading] = useState(true);
+
+//   // Load face-api models
+//   const loadModels = async () => {
+//     const MODEL_URL = '/models';
+//     await Promise.all([
+//       faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL),
+//       faceapi.nets.faceRecognitionNet.loadFromUri(MODEL_URL),
+//       faceapi.nets.faceLandmark68Net.loadFromUri(MODEL_URL),
+//     ]);
+//   };
+
+//   // Convert base64 to Image
+// // Get stored face descriptor from base64
+// const getStoredFaceDescriptor = async () => {
+//   const capturedImages = JSON.parse(localStorage.getItem('capturedImages') || '[]');
+//   if (capturedImages.length === 0) return null;
+
+//   const base64 = capturedImages[0];
+//   const img = new Image();
+//   img.src = base64;
+
+//   await new Promise(resolve => (img.onload = resolve));
+
+//   const detection = await faceapi
+//     .detectSingleFace(img, new faceapi.TinyFaceDetectorOptions())
+//     .withFaceLandmarks()
+//     .withFaceDescriptor();
+
+//   return detection?.descriptor;
+// };
+
+
+//   // Start video stream
+//   const startVideo = async () => {
+//     const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+//     videoRef.current.srcObject = stream;
+//   };
+
+//   // Compare face descriptor
+//   const checkFace = async () => {
+//     const result = await faceapi
+//       .detectAllFaces(videoRef.current, new faceapi.TinyFaceDetectorOptions())
+//       .withFaceLandmarks()
+//       .withFaceDescriptors();
+
+//     if (!result.length) return;
+
+//     if (result.length > 1) {
+//       // More than 1 face
+//       if (warningCount < 2) {
+//         alert(`Multiple faces detected! Warning ${warningCount + 1}/2`);
+//         setWarningCount(prev => prev + 1);
+//       } else {
+//         alert('Test failed due to face violation.');
+//         videoRef.current.srcObject.getTracks().forEach(track => track.stop());
+//         navigate('/test-failed');
+//       }
+//     } else {
+//       const faceDescriptor = result[0].descriptor;
+//       const distance = faceapi.euclideanDistance(faceDescriptor, storedDescriptor);
+//       if (distance > 0.6) {
+//         console.log('Face does not match!');
+//         // Optional: show message or end test if face mismatch is strict
+//       }
+//     }
+//   };
+
+//   useEffect(() => {
+//     const init = async () => {
+//       await loadModels();
+//       const descriptor = await getStoredFaceDescriptor();
+//       if (descriptor) {
+//         setStoredDescriptor(descriptor);
+//         await startVideo();
+//         setIsLoading(false);
+//       }
+//     };
+//     init();
+//   }, []);
+
+//   useEffect(() => {
+//     let interval;
+//     if (!isLoading && storedDescriptor) {
+//       interval = setInterval(checkFace, 4000); // check every 4 sec
+//     }
+//     return () => clearInterval(interval);
+//   }, [isLoading, storedDescriptor, warningCount]);
+
+
+//     const [modelsLoaded, setModelsLoaded] = useState(false);
+//     const [detections, setDetections] = useState([]);
+
+//  useEffect(() => {
+//     // Load face-api.js models
+//     const loadModels = async () => {
+//       const MODEL_URL = process.env.PUBLIC_URL + '/models';
+//       await faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL);
+//       await faceapi.nets.faceLandmark68Net.loadFromUri(MODEL_URL);
+//       await faceapi.nets.faceRecognitionNet.loadFromUri(MODEL_URL);
+//       await faceapi.nets.faceExpressionNet.loadFromUri(MODEL_URL);
+//       setModelsLoaded(true);
+//     };
+
+//     loadModels();
+//   }, []);
+    
+//       const handleVideoOnPlay = () => {
+//         setInterval(async () => {
+//           if (videoRef.current) {
+//             const detections = await faceapi.detectAllFaces(
+//               videoRef.current,
+//               new faceapi.TinyFaceDetectorOptions()
+//             ).withFaceLandmarks().withFaceExpressions();
+    
+//             setDetections(detections);
+//           }
+//         }, 100);
+//       };
+  
+// const videoRef = useRef(null);
+//   const [warningCount, setWarningCount] = useState(0);
+//   const [storedDescriptor, setStoredDescriptor] = useState(null);
+//   const [isLoading, setIsLoading] = useState(true);
+//   const [detections, setDetections] = useState([]);
+
+//   // Load face-api.js models
+//   useEffect(() => {
+//     const loadModels = async () => {
+//       const MODEL_URL = process.env.PUBLIC_URL + '/models';
+//       await Promise.all([
+//         faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL),
+//         faceapi.nets.faceLandmark68Net.loadFromUri(MODEL_URL),
+//         faceapi.nets.faceRecognitionNet.loadFromUri(MODEL_URL),
+//         faceapi.nets.faceExpressionNet.loadFromUri(MODEL_URL),
+//       ]);
+//       console.log('Models loaded');
+//     };
+
+//     loadModels();
+//   }, []);
+
+//   // Get stored descriptor from base64
+//   const getStoredFaceDescriptor = async () => {
+//     const capturedImages = JSON.parse(localStorage.getItem('capturedImages') || '[]');
+//     if (capturedImages.length === 0) return null;
+
+//     const img = new Image();
+//     img.src = capturedImages[0];
+
+//     await new Promise((resolve) => (img.onload = resolve));
+
+//     const detection = await faceapi
+//       .detectSingleFace(img, new faceapi.TinyFaceDetectorOptions())
+//       .withFaceLandmarks()
+//       .withFaceDescriptor();
+
+//     return detection?.descriptor;
+//   };
+
+//   // Face checking logic
+// const checkFace = async () => {
+//   try {
+//     if (videoRef.current.readyState !== 4) {
+//       console.warn("Video not ready yet. Skipping detection.");
+//       return;
+//     }
+    
+//     if (!videoRef.current) return;
+
+//     const results = await faceapi
+//       .detectAllFaces(videoRef.current, new faceapi.TinyFaceDetectorOptions())
+//       .withFaceLandmarks()
+//       .withFaceDescriptors();
+
+//     console.log("Detected faces:", results.length);
+
+//     if (!results.length) {
+//       // No face detected
+//       if (warningCount < 2) {
+//         alert(`No face detected! Warning ${warningCount + 1}/2`);
+//         setWarningCount((prev) => prev + 1);
+//       } else {
+//         alert('Test failed due to no face detected.');
+//         stopVideoStream();
+//         navigate('/test-failed');
+//       }
+//       return;
+//     }
+
+//     if (results.length > 1) {
+//       // Multiple faces detected
+//       if (warningCount < 2) {
+//         alert(`Multiple faces detected! Warning ${warningCount + 1}/2`);
+//         setWarningCount((prev) => prev + 1);
+//       } else {
+//         alert('Test failed due to multiple faces.');
+//         stopVideoStream();
+//         navigate('/test-failed');
+//       }
+//       return;
+//     }
+
+//     // Only one face detected — now match it
+//     const currentDescriptor = results[0].descriptor;
+//     const distance = faceapi.euclideanDistance(currentDescriptor, storedDescriptor);
+
+//     console.log("Face distance:", distance);
+
+//     if (distance > 0.6) {
+//       if (warningCount < 2) {
+//         alert(`Face mismatch detected! Warning ${warningCount + 1}/2`);
+//         setWarningCount((prev) => prev + 1);
+//       } else {
+//         alert('Test failed due to face mismatch.');
+//         stopVideoStream();
+//         navigate('/test-failed');
+//       }
+//     }
+
+//   } catch (err) {
+//     console.error("Face check error:", err);
+//   }
+// };
+
+// // Helper to stop the stream cleanly
+// const stopVideoStream = () => {
+//   if (videoRef.current && videoRef.current.srcObject) {
+//     videoRef.current.srcObject.getTracks().forEach(track => track.stop());
+//   }
+// };
+
+
+//   useEffect(() => {
+//     const init = async () => {
+//       await new Promise((resolve) => setTimeout(resolve, 1000)); // tiny delay for models
+//       const descriptor = await getStoredFaceDescriptor();
+//       if (descriptor) {
+//         setStoredDescriptor(descriptor);
+//         await startVideo();
+//         setIsLoading(false);
+//       } else {
+//         console.error('No stored descriptor found.');
+//       }
+//     };
+//     init();
+//   }, []);
+
+//   useEffect(() => {
+//     let interval;
+//     if (!isLoading && storedDescriptor) {
+//       interval = setInterval(checkFace, 4000); // Check every 4 seconds
+//     }
+//     return () => clearInterval(interval);
+//   }, [isLoading, storedDescriptor, warningCount]);
+
+//   // Live detections for face expressions (optional)
+//   const handleVideoOnPlay = async () => {
+//     if (videoRef.current.readyState === 4) {
+//       const detections = await faceapi
+//         .detectAllFaces(videoRef.current, new faceapi.TinyFaceDetectorOptions())
+//         .withFaceLandmarks()
+//         .withFaceExpressions();
+//       setDetections(detections);
+//     }
+    
+//     setInterval(async () => {
+//       if (videoRef.current) {
+//         const detections = await faceapi
+//           .detectAllFaces(videoRef.current, new faceapi.TinyFaceDetectorOptions())
+//           .withFaceLandmarks()
+//           .withFaceExpressions();
+//         setDetections(detections);
+//       }
+//     }, 500); // every 0.5s
+//   };
+
+
+//   const [stream, setStream] = useState(null);
+
+// const startVideo = async () => {
+//   try {
+//     const newStream = await navigator.mediaDevices.getUserMedia({ video: true });
+//     setStream(newStream); // Save stream separately
+//   } catch (error) {
+//     console.error('Error accessing webcam:', error);
+//   }
+// };
+
+// // Set srcObject properly when stream is ready
+// useEffect(() => {
+//   if (videoRef.current && stream) {
+//     videoRef.current.srcObject = stream;
+
+//     const playVideo = () => {
+//       if (videoRef.current.readyState >= 2) {
+//         videoRef.current.play().catch((err) => {
+//           console.warn("Play interrupted:", err);
+//         });
+//       } else {
+//         videoRef.current.onloadedmetadata = () => {
+//           videoRef.current.play().catch((err) => {
+//             console.warn("Play interrupted after metadata:", err);
+//           });
+//         };
+//       }
+//     };
+
+//     playVideo();
+//   }
+// }, [stream]);
+
+
+// // Start video on mount
+// useEffect(() => {
+//   startVideo();
+// }, []);
+
   return (
     <div className="test-container">
+          <div>
+          {/* <h2>Test in Progress...</h2>
+      <video
+        ref={videoRef}
+        onPlay={handleVideoOnPlay}
+        autoPlay
+        playsInline
+
+        muted
+        width="240"
+        height="240"
+        style={{ border: '2px solid black', borderRadius: '8px' }}
+      /> */}
+      <Exampage/>
+    </div>
+
       <header className="test-header">
         <img className="logo1" src={Logo} alt="Logo" />
         <button className="exit-btn" onClick={handleExit}>
