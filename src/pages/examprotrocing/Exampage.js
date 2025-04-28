@@ -39,7 +39,7 @@ function Exampage() {
 
         setDetections(detections);
       }
-    }, 100);
+    }, 1000);
   };
 
   return (
