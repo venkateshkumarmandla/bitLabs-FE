@@ -38,6 +38,9 @@ import ManualTestingTest from './questions/ManualTesting.json';
 import VueTest from './questions/Vue.json';
 import axios from 'axios';
 import Exampage from '../../pages/examprotrocing/Exampage';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const shuffleArray = (array) => {
   return array.sort(() => Math.random() - 0.5);
@@ -309,6 +312,9 @@ const ApplicantTakeTest = () => {
     setCurrentPage('test');
     setTestStarted(true);
     enterFullScreen();
+  };
+  const captureImage = () => {
+    setCurrentPage('captureImage');
   };
 
   const handleNextQuestion = () => {
@@ -824,124 +830,12 @@ const ApplicantTakeTest = () => {
 //       return;
 //     }
 
-//     // Only one face detected — now match it
-//     const currentDescriptor = results[0].descriptor;
-//     const distance = faceapi.euclideanDistance(currentDescriptor, storedDescriptor);
-
-//     console.log("Face distance:", distance);
-
-//     if (distance > 0.6) {
-//       if (warningCount < 2) {
-//         alert(`Face mismatch detected! Warning ${warningCount + 1}/2`);
-//         setWarningCount((prev) => prev + 1);
-//       } else {
-//         alert('Test failed due to face mismatch.');
-//         stopVideoStream();
-//         navigate('/test-failed');
-//       }
-//     }
-
-//   } catch (err) {
-//     console.error("Face check error:", err);
-//   }
-// };
-
-// // Helper to stop the stream cleanly
-// const stopVideoStream = () => {
-//   if (videoRef.current && videoRef.current.srcObject) {
-//     videoRef.current.srcObject.getTracks().forEach(track => track.stop());
-//   }
-// };
-
-
-//   useEffect(() => {
-//     const init = async () => {
-//       await new Promise((resolve) => setTimeout(resolve, 1000)); // tiny delay for models
-//       const descriptor = await getStoredFaceDescriptor();
-//       if (descriptor) {
-//         setStoredDescriptor(descriptor);
-//         await startVideo();
-//         setIsLoading(false);
-//       } else {
-//         console.error('No stored descriptor found.');
-//       }
-//     };
-//     init();
-//   }, []);
-
-//   useEffect(() => {
-//     let interval;
-//     if (!isLoading && storedDescriptor) {
-//       interval = setInterval(checkFace, 4000); // Check every 4 seconds
-//     }
-//     return () => clearInterval(interval);
-//   }, [isLoading, storedDescriptor, warningCount]);
-
-//   // Live detections for face expressions (optional)
-//   const handleVideoOnPlay = async () => {
-//     if (videoRef.current.readyState === 4) {
-//       const detections = await faceapi
-//         .detectAllFaces(videoRef.current, new faceapi.TinyFaceDetectorOptions())
-//         .withFaceLandmarks()
-//         .withFaceExpressions();
-//       setDetections(detections);
-//     }
-    
-//     setInterval(async () => {
-//       if (videoRef.current) {
-//         const detections = await faceapi
-//           .detectAllFaces(videoRef.current, new faceapi.TinyFaceDetectorOptions())
-//           .withFaceLandmarks()
-//           .withFaceExpressions();
-//         setDetections(detections);
-//       }
-//     }, 500); // every 0.5s
-//   };
-
-
-//   const [stream, setStream] = useState(null);
-
-// const startVideo = async () => {
-//   try {
-//     const newStream = await navigator.mediaDevices.getUserMedia({ video: true });
-//     setStream(newStream); // Save stream separately
-//   } catch (error) {
-//     console.error('Error accessing webcam:', error);
-//   }
-// };
-
-// // Set srcObject properly when stream is ready
-// useEffect(() => {
-//   if (videoRef.current && stream) {
-//     videoRef.current.srcObject = stream;
-
-//     const playVideo = () => {
-//       if (videoRef.current.readyState >= 2) {
-//         videoRef.current.play().catch((err) => {
-//           console.warn("Play interrupted:", err);
-//         });
-//       } else {
-//         videoRef.current.onloadedmetadata = () => {
-//           videoRef.current.play().catch((err) => {
-//             console.warn("Play interrupted after metadata:", err);
-//           });
-//         };
-//       }
-//     };
-
-//     playVideo();
-//   }
-// }, [stream]);
-
-
-// // Start video on mount
-// useEffect(() => {
-//   startVideo();
-// }, []);
 
   return (
     <div className="test-container">
           <div>
+          <ToastContainer />
+
           {/* <h2>Test in Progress...</h2>
       <video
         ref={videoRef}
@@ -954,7 +848,8 @@ const ApplicantTakeTest = () => {
         height="240"
         style={{ border: '2px solid black', borderRadius: '8px' }}
       /> */}
-      <Exampage/>
+                <Exampage/>
+
     </div>
 
       <header className="test-header">
@@ -1052,16 +947,23 @@ const ApplicantTakeTest = () => {
           </div>
           <div align="right">
             <button className="start-btn" onClick={startTest}>
-              Start
+             Next
             </button>
           </div>
         </div>
       )}
+ 
 
       {currentPage === 'test' && (
+        
         <div className={`test-page ${showGoBackButton ? 'blur-background' : ''}`}>
+          <div className="instructions-page">
+          {/* <Exampage/> */}
+ 
+        </div>
           <div className="header">
             <h3>
+
               <span className="text-name1">{testName}</span>
               <h4 className='test-sub'>
                 Question {currentQuestionIndex + 1} / {questions.numberOfQuestions}
