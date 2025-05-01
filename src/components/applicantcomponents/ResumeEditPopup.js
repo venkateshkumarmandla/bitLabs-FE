@@ -35,8 +35,8 @@ const ResumeEditPopup = ({ id, resumeFileName }) => {
         setError('Only PDF files are allowed.');
         setResumeFile(null);
         setFileName(''); 
-      } else if (file.size > 1048576) { 
-        setError('File size should be less than 1MB.');
+      } else if (file.size > 5 * 1024 * 1024) { 
+        setError('File size should be less than 5MB.');
         setResumeFile(null);
         setFileName(''); 
       } else {

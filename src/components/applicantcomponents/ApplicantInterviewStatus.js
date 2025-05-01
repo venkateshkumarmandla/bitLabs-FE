@@ -90,15 +90,15 @@ const ApplicantInterviewStatus = ({ selectedJobId, setSelectedJobId }) => {
     }
   }, [jobId]);
 
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      if (jobId) {
-        fetchJobStatus();
-      }
-    }, 5000); // Polling interval set to 5 seconds
+  // useEffect(() => {
+  //   const intervalId = setInterval(() => {
+  //     if (jobId) {
+  //       fetchJobStatus();
+  //     }
+  //   }, 5000); // Polling interval set to 5 seconds
 
-    return () => clearInterval(intervalId);
-  }, [jobId]);
+  //   return () => clearInterval(intervalId);
+  // }, [jobId]);
 
   function formatDate(dateString) {
     const options = { year: 'numeric', month: 'short', day: 'numeric' };
