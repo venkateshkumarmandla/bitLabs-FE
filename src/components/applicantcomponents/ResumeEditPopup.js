@@ -60,7 +60,9 @@ const ResumeEditPopup = ({ id, resumeFileName }) => {
       const formData = new FormData();
       formData.append('resume', resumeFile);
       const response = await axios.post(
-        `${apiUrl}/resume/upload/${user.id}`,
+        // `${apiUrl}/resume/upload/${user.id}`,
+        `${apiUrl}/applicant-pdf/${user.id}/upload`,
+
         formData,
         {
           headers: {

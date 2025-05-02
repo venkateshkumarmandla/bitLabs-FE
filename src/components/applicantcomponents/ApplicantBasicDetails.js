@@ -378,7 +378,7 @@ delete transformedApplicantProfileDTO.skillsRequired;
   
       if (file.size > fileSizeLimit) {
         
-        addSnackbar({ message: 'File size should be less than 1MB and Only PDF allowed.', type: 'error' });
+        addSnackbar({ message: 'File size should be less than 5MB and Only PDF allowed.', type: 'error' });
         setErrorMessage('File size should be less than 5MB and Only PDF allowed.');
         setSelectedFile(null);
         return;
