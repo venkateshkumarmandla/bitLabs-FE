@@ -373,13 +373,13 @@ delete transformedApplicantProfileDTO.skillsRequired;
   const handleResumeSelect = (event) => {
     const file = event.target.files[0];
     if (file) {
-      const fileSizeLimit = 1 * 1024 * 1024; 
+      const fileSizeLimit = 5 * 1024 * 1024; 
       const allowedTypes = ['application/pdf'];
   
       if (file.size > fileSizeLimit) {
         
-        addSnackbar({ message: 'File size should be less than 1MB and Only PDF allowed.', type: 'error' });
-        setErrorMessage('File size should be less than 1MB and Only PDF allowed.');
+        addSnackbar({ message: 'File size should be less than 5MB and Only PDF allowed.', type: 'error' });
+        setErrorMessage('File size should be less than 5MB and Only PDF allowed.');
         setSelectedFile(null);
         return;
       }
