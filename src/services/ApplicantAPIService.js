@@ -27,7 +27,6 @@
 import axios from 'axios';
 
 // Log the API URL once when the module loads
-console.log("API URL:", process.env.REACT_APP_API_URL);
 
 export const apiUrl = process.env.REACT_APP_API_URL;
 
