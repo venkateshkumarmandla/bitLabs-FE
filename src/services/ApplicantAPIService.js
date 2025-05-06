@@ -24,7 +24,6 @@
 
 
 
-import axios from 'axios';
 
 // Log the API URL once when the module loads
 
