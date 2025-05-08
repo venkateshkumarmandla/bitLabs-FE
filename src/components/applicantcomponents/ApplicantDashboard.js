@@ -565,26 +565,9 @@ const ApplicantDashboard = () => {
           }}
         /> 
 
- {/*
-{smartphoneImage && (
-        <img
-          src={smartphoneImage}
-          alt="App Preview"
-          style={{
-            width: '231px',
-            height: '254px',
-            objectFit: 'contain',
-            marginBottom: '0px',
-            marginTop: '-40px',
-            marginLeft: '60px',
-          }}
-        />
-      )}*/}
+
       </div>
-    {/* <div
-      className="d-flex flex-wrap flex-md-nowrap align-items-center h-100"
-      style={{ width: '100%' }}
-    > */}
+    
    
 
       {/* Text + Store Links */}
@@ -596,14 +579,9 @@ const ApplicantDashboard = () => {
           Download the app now!
         </p>
         <div  style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginTop: '10px' }}>
-          <a href="https://apps.apple.com" target="_blank" rel="noreferrer">
             <img src={appStoreIcon} alt="App Store" style={{ height: '36px', width: '121px', }} />
-          </a>
-          <a href="https://play.google.com" target="_blank" rel="noreferrer">
             <img src={playStore} alt="Google Play" style={{ height: '36px', width:'121px' }} />
-          </a>
         </div>
-      {/* </div> */}
     </div>
   </div>
 </div>

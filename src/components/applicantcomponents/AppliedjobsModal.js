@@ -378,9 +378,7 @@ const Modal = ({ onClose }) => {
                 </div>
               </div>
             </div>
-          {/* {userData?.localResume && (
-      
-          )} */}
+    
 
           {/* Optional: ModalWrapper with ResumeBuilder (if needed) */}
           {isModalOpen && (
