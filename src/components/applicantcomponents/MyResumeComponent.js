@@ -150,7 +150,7 @@ const MyResumeComponent = ({ pdfUrl, loading }) => {
 
   return (
     <div style={styles.commonContainer}>
-      <section style={styles.banner}>
+      {/* <section style={styles.banner}>
         <div style={styles.bannerContent}>
           <h1 style={styles.bannerHeading}>Build your professional resume for free</h1>
           <p>
@@ -165,7 +165,7 @@ const MyResumeComponent = ({ pdfUrl, loading }) => {
         <div style={styles.bannerImage}>
           <img src={BannerImage} alt="Banner" style={styles.bannerImageImg} className="banner1"/>
         </div>
-      </section>
+      </section> */}
 
       <section className="flat-dashboard-password" style={{borderRadius:'23px 23px 1px 2px', marginBottom: 0}}>
       <div className="themes-container">

@@ -828,46 +828,73 @@ delete transformedApplicantProfileDTO.skillsRequired;
           marginRight: '20px',
           boxSizing: 'border-box',
           cursor: 'pointer',
+          position: 'relative', 
+          width: '60%',
+          color: '#333',
+          background: 'transparent',
+          backgroundColor: '#F5F5F5',
+
+
+
         }}
       > 
       <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
 <path d="M13.75 2H6.75C6.21957 2 5.71086 2.21071 5.33579 2.58579C4.96071 2.96086 4.75 3.46957 4.75 4V20C4.75 20.5304 4.96071 21.0391 5.33579 21.4142C5.71086 21.7893 6.21957 22 6.75 22H18.75C19.2804 22 19.7891 21.7893 20.1642 21.4142C20.5393 21.0391 20.75 20.5304 20.75 20V9L13.75 2Z" stroke="#9E9E9E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M13.75 2V9H20.75" stroke="#9E9E9E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
-        <input
-          id="resume-text-input"
-          type="text"
-          
-          placeholder="Upload your resume"
-          value={selectedFile ? selectedFile.name : ''}
-          readOnly
-          style={{
-            width: '100%',
-            height: '100%',
-            border: 'none',
-            background: 'transparent',
-            paddingLeft: '40px',
-            boxSizing: 'border-box',
-            cursor: 'pointer',
-          }}
-        />
-      </div>
-      <button
-        type="button"
+
+
+  {/* Input field */}
+  <input
+    id="resume-text-input"
+    type="text"
+    placeholder="Upload your resume"
+    value={selectedFile ? selectedFile.name : ''}
+    readOnly
+    style={{
+      width: '100%',
+      height: '40px', // adjust as needed
+      border: 'none',
+
+      background: 'transparent',
+      paddingLeft: '20px',
+      paddingRight: '100px', // make room for button
+      boxSizing: 'border-box',
+      cursor: 'pointer',
+      backgroundColor: '#F5F5F5',
+      color: '#333',
+      fontSize: '15px',
+      fontFamily: "'Plus Jakarta Sans', sans-serif",
+    }}
+  />
+
+  {/* Browse button inside input */}
+  <button
+    type="button"
         onClick={triggerFileInputClick}
-        className="btn-3"
-        style={{
-          backgroundColor: '#7E7E7E',
-          color: 'white',
-          padding: '10px 15px',
-          border: 'none',
-          borderRadius: '8px',
-          cursor: 'pointer',
-          textTransform: 'none',
-        }}
-      >
-        Browse
-      </button>
+
+    className="btn-3"
+    value={selectedFile ? selectedFile.name : ''}
+
+    style={{
+      position: 'absolute',
+      top: '50%',
+      right: '10px',
+      transform: 'translateY(-50%)',
+      backgroundColor: '#7E7E7E',
+      color: 'white',
+      padding: '8px 15px',
+      border: 'none',
+      borderRadius: '8px',
+      cursor: 'pointer',
+      textTransform: 'none',
+    }}
+  >
+    Browse
+  </button>
+
+      </div>
+  
 
     </div>
  {errorMessage && (
@@ -877,13 +904,13 @@ delete transformedApplicantProfileDTO.skillsRequired;
   )}
               </div>
               <br></br>
-              <p style={{ marginRight: '5px' }}><strong>Or</strong></p>
+              {/* <p style={{ marginRight: '5px' }}><strong>Or</strong></p> */}
               <br></br>
               <ModalWrapper1 isOpen={isModalOpen} onClose={closeModal} title="Build Your Resume">
         <ResumeBuilder />
       </ModalWrapper1>
       {error && <div className="error-message">{error}</div>}
-              <div id="item_2" className="col-lg-6 col-md-12" style={{ display: 'flex', alignItems: 'center' }}>
+              {/* <div id="item_2" className="col-lg-6 col-md-12" style={{ display: 'flex', alignItems: 'center' }}>
                 <button
                   type="button"
                   onClick={openModal}
@@ -901,7 +928,7 @@ delete transformedApplicantProfileDTO.skillsRequired;
                 >
                   Build Your Resume
                 </button>
-              </div>
+              </div> */}
 
               
               <ModalComponent
